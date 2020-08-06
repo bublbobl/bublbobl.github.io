@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="1296" height="500"
+style="border:0px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+"use strict";
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var interval;
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+
+ctx.canvas.width  = w;
+ctx.canvas.height = h;
+
+var img = new Image();   // Create new img element
+img.src = 'danny-p.jpg'; // Set source path
+
+window.addEventListener( "keypress", doKeyDown, false )
+
+
+
+var x = 350;
+var y = 35;
+var i = 0;
+
+function doKeyDown(e) {
+
+//alert( e.keyCode )
+//w
+	if ( e.keyCode == 119 ) {
+		y = y-15;
+	}
+//s
+	if ( e.keyCode == 115 ) {
+		y = y+15;
+	}
+//a
+	if ( e.keyCode == 97 ) {
+		x = x-15;
+	}
+//d
+	if ( e.keyCode == 100 ) {
+		x = x+15;
+	}
+	dodraw();
+}
+
+function dodraw() {
+    //ctx.clearRect(0,0,w,h);
+    //y= Math.floor(Math.random() * h);
+	//x= Math.floor(Math.random() * w);
+	ctx.drawImage(img, x, y)
+    ctx.fillStyle = "#00FF00";
+  	ctx.fillRect(x,y,300,40);
+    ctx.fillStyle = "#BBFFBB";
+
+    ctx.font = "30px Calibri";
+
+	var coord_string = x + " , " + y + " , "  + " bean";
+    ctx.fillText("Danny P" , x+90, y+30);
+	//ctx.rotate(20 * Math.PI / 180);
+	i = i + 1;
+
+
+    //if (i > 40) clearInterval(interval);
+}
+
+//interval = setInterval(dodraw, 700);
+
+</script>
+
+</body>
+</html>
+
