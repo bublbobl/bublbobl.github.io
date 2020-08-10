@@ -23,7 +23,7 @@ ctx.canvas.width  = w;
 ctx.canvas.height = h;
 
 var img = new Image();   // Create new img element
-img.src = 'danny-p.jpg'; // Set source path
+img.src = 'bball.png'; // Set source path
 
 window.addEventListener( "keypress", doKeyDown, false )
 
@@ -93,12 +93,20 @@ function doKeyDown(e) {
         //writeMessage(canvas, message);
       }, false);
 
+
+var size = 100;
+
 function dodraw() {
 
     //ctx.clearRect(0,0,w,h);
     //y= Math.floor(Math.random() * h);
 	//x= Math.floor(Math.random() * w);
-	ctx.drawImage(img, mx, my);
+	ctx.drawImage(img, mx - size/2, my-size/2,size,size);
+	ctx.drawImage(img, w-mx - size/2, my-size/2, size, size);
+	ctx.drawImage(img, w-mx - size/2, h-my-size/2, size, size);
+	ctx.drawImage(img, mx - size/2, h-my-size/2, size, size);
+	
+
     //ctx.fillStyle = "#00FFFF";
   	//ctx.fillRect(x,y,300,40);
     //ctx.fillStyle = "#000000";
