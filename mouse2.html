@@ -145,20 +145,16 @@ function dodraw() {
 	
 
 
-	mx2 = centerx + radius * Math.sin(angle+2*Math.PI *(1/6));
-	my2 = centery + radius * Math.cos(angle+2*Math.PI *(1/6));
+	mx2 = centerx + radius * Math.sin(angle+2*Math.PI *(2/4));
+	my2 = centery + radius * Math.cos(angle+2*Math.PI *(2/4));
 	
-	var mx3 = centerx + radius * Math.sin(angle+2*Math.PI*(2/6));
-	var my3 = centery + radius * Math.cos(angle+ 2* Math.PI*(2/6));
+	var mx3 = centerx + radius * Math.sin(angle+2*Math.PI*(3/4));
+	var my3 = centery + radius * Math.cos(angle+ 2* Math.PI*(3/4));
 	
-	var mx4 = centerx + radius * Math.sin(angle+ 2*Math.PI * (3/6));
-	var my4 = centery + radius * Math.cos(angle+ 2* Math.PI * (3/6));
+	var mx4 = centerx + radius * Math.sin(angle+ 2*Math.PI * (4/4));
+	var my4 = centery + radius * Math.cos(angle+ 2* Math.PI * (4/4));
 	
-	var mx5 = centerx + radius * Math.sin(angle+ 2*Math.PI * (4/6));
-	var my5 = centery + radius * Math.cos(angle+ 2* Math.PI * (4/6));
 	
-	var mx6 = centerx + radius * Math.sin(angle+ 2*Math.PI * (5/6));
-	var my6 = centery + radius * Math.cos(angle+ 2* Math.PI * (5/6));
 	
 
 	//console.log("radius = ", radius, "angle =  ", angle, "mx2 =  ", mx2, "my2 = " , my2, (my-centery) / radius);
@@ -168,8 +164,7 @@ function dodraw() {
 	ctx.drawImage(img, mx2 - size/2, my2 -size/2, size, size);
 	ctx.drawImage(img, mx3 - size/2, my3 -size/2, size, size);
 	ctx.drawImage(img, mx4 - size/2, my4 -size/2, size, size);
-	ctx.drawImage(img, mx5 - size/2, my5 -size/2, size, size);
-	ctx.drawImage(img, mx6 - size/2, my6 -size/2, size, size);
+
 
 
 
