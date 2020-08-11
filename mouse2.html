@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<canvas id="myCanvas" width="1296" height="500"
+style="border:0px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+"use strict";
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var interval;
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+
+var audio = new Audio('Editor[2].mp3');
+
+ctx.canvas.width  = w;
+ctx.canvas.height = h;
+
+var img = new Image();   // Create new img element
+img.src = 'bball.png'; // Set source path
+
+window.addEventListener( "keypress", doKeyDown, false )
+
+
+
+var x = 350;
+var y = 35;
+var i = 0;
+
+var mx = -100;
+var my = -100;
+
+dodraw();
+
+
+function doKeyDown(e) {
+
+//alert( e.keyCode )
+//w
+	if ( e.keyCode == 119 ) {
+		y = y-15;
+	}
+//s
+	else if ( e.keyCode == 115 ) {
+		y = y+15;
+	}
+//a
+	else if ( e.keyCode == 97 ) {
+		x = x-15;
+	}
+//d
+	else if ( e.keyCode == 100 ) {
+		x = x+15;
+	}
+	else
+	{
+		audio.play();
+	}
+
+	dodraw();
+}
+
+
+  function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.font = '18pt Calibri';
+        context.fillStyle = 'black';
+        context.fillText(message, 10, 25);
+      }
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+     //var canvas = document.getElementById('myCanvas');
+     // var context = canvas.getContext('2d');
+
+      canvas.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+		mx = mousePos.x;
+		my = mousePos.y;
+		dodraw();
+        //writeMessage(canvas, message);
+      }, false);
+
+
+var size = 100;
+
+var centerx = w/2;
+var centery = h/2;
+
+var mx2 =0;
+var my2 =0;
+var radius = 0;
+var angle = 0;
+
+
+
+function dodraw() {
+
+    //ctx.clearRect(0,0,w,h);
+    //y= Math.floor(Math.random() * h);
+	//x= Math.floor(Math.random() * w);
+	
+	radius = Math.sqrt((mx - centerx)**2 + (my - centery)**2);
+	//radius = ((mx-centerx) / Math.cos(angle));
+	
+	angle =  Math.asin((centery-my) / radius);
+
+
+	if (mx <  centerx) {
+	
+		if (my > centery) {
+		
+			// lower left
+			angle = Math.PI  - angle ;
+		} else
+		{
+			// upper left
+			angle =  Math.PI - angle;
+		}
+	} else {
+		if (my 	> centery) {
+			// lower right
+					angle =  Math.PI* 2 + angle;
+
+		} else
+		{
+		// upper right
+//
+
+		}
+	//
+	}
+	
+
+
+	mx2 = centerx + radius * Math.sin(angle+2*Math.PI *(1/6));
+	my2 = centery + radius * Math.cos(angle+2*Math.PI *(1/6));
+	
+	var mx3 = centerx + radius * Math.sin(angle+2*Math.PI*(2/6));
+	var my3 = centery + radius * Math.cos(angle+ 2* Math.PI*(2/6));
+	
+	var mx4 = centerx + radius * Math.sin(angle+ 2*Math.PI * (3/6));
+	var my4 = centery + radius * Math.cos(angle+ 2* Math.PI * (3/6));
+	
+	var mx5 = centerx + radius * Math.sin(angle+ 2*Math.PI * (4/6));
+	var my5 = centery + radius * Math.cos(angle+ 2* Math.PI * (4/6));
+	
+	var mx6 = centerx + radius * Math.sin(angle+ 2*Math.PI * (5/6));
+	var my6 = centery + radius * Math.cos(angle+ 2* Math.PI * (5/6));
+	
+
+	//console.log("radius = ", radius, "angle =  ", angle, "mx2 =  ", mx2, "my2 = " , my2, (my-centery) / radius);
+	
+	
+	ctx.drawImage(img, mx - size/2, my-size/2,size,size);
+	ctx.drawImage(img, mx2 - size/2, my2 -size/2, size, size);
+	ctx.drawImage(img, mx3 - size/2, my3 -size/2, size, size);
+	ctx.drawImage(img, mx4 - size/2, my4 -size/2, size, size);
+	ctx.drawImage(img, mx5 - size/2, my5 -size/2, size, size);
+	ctx.drawImage(img, mx6 - size/2, my6 -size/2, size, size);
+
+
+
+
+	//ctx.drawImage(img, w-mx - size/2, h-my-size/2, size, size);
+	//ctx.drawImage(img, mx - size/2, h-my-size/2, size, size);
+	
+
+    //ctx.fillStyle = "#00FFFF";
+  	//ctx.fillRect(x,y,300,40);
+    //ctx.fillStyle = "#000000";
+
+    //ctx.font = "30px Calibri";
+
+	//var coord_string = x + " , " + y + " , "  + " bean";
+    //ctx.fillText(mx  + " , " + my , mx, my);
+	//ctx.rotate(20 * Math.PI / 180);
+	//i = i + 1;
+
+
+    //if (i > 40) clearInterval(interval);
+}
+dodraw();
+
+//interval = setInterval(dodraw, 70);
+
+</script>
+
+</body>
+</html>
+
