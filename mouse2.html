@@ -112,10 +112,11 @@ function dodraw() {
     //y= Math.floor(Math.random() * h);
 	//x= Math.floor(Math.random() * w);
 	
-	radius = Math.sqrt((mx - centerx)**2 + (my - centery)**2);
+	radius = Math.floor(Math.sqrt((mx - centerx)**2 + (my - centery)**2));
 	//radius = ((mx-centerx) / Math.cos(angle));
 	
 	angle =  Math.asin((centery-my) / radius);
+	
 
 
 	if (mx <  centerx) {
@@ -145,25 +146,45 @@ function dodraw() {
 	
 
 
-	mx2 = centerx + radius * Math.sin(angle+2*Math.PI *(2/4));
-	my2 = centery + radius * Math.cos(angle+2*Math.PI *(2/4));
+	//var mx2 = Math.floor(centerx + radius * Math.sin(angle+2*Math.PI *(2/8)));
+	//var my2 = Math.floor(centery + radius * Math.cos(angle+2*Math.PI *(2/8)));
 	
-	var mx3 = centerx + radius * Math.sin(angle+2*Math.PI*(3/4));
-	var my3 = centery + radius * Math.cos(angle+ 2* Math.PI*(3/4));
+	var mx2 = Math.floor(centerx + radius * Math.cos(angle+2*Math.PI*(1/6)));
+	var my2 =  Math.floor(centery - radius * Math.sin(angle+2*Math.PI*(1/6)));
 	
-	var mx4 = centerx + radius * Math.sin(angle+ 2*Math.PI * (4/4));
-	var my4 = centery + radius * Math.cos(angle+ 2* Math.PI * (4/4));
+	var mx3 = Math.floor(centerx + radius * Math.cos(angle+2*Math.PI*(2/6)));
+	var my3 =  Math.floor(centery - radius * Math.sin(angle+2*Math.PI*(2/6)));
+	
+	var mx4 = Math.floor(centerx + radius * Math.cos(angle+2*Math.PI*(3/6)));
+	var my4 =  Math.floor(centery - radius * Math.sin(angle+2*Math.PI*(3/6)));
+	var mx5 = Math.floor(centerx + radius * Math.cos(angle+2*Math.PI*(4/6)));
+	var my5 =  Math.floor(centery - radius * Math.sin(angle+2*Math.PI*(4/6)));
+	var mx6 = Math.floor(centerx + radius * Math.cos(angle+2*Math.PI*(5/6)));
+	var my6 =  Math.floor(centery - radius * Math.sin(angle+2*Math.PI*(5/6)));
+	
+	//var mx3 = centerx + radius * Math.sin(angle+2*Math.PI*(3/4));
+	//var my3 = centery + radius * Math.cos(angle+ 2* Math.PI*(3/4));
+	
+	//var mx4 = centerx + radius * Math.sin(angle+ 2*Math.PI * (4/4));
+	//var my4 = centery + radius * Math.cos(angle+ 2* Math.PI * (4/4));
 	
 	
 	
+	//console.log ("angle = ", angle); 
+	//console.log ("mx = ", mx, "my = ", my);
+	//console.log ("mx2 = ", mx2, "my2 = ", my2);
 
-	//console.log("radius = ", radius, "angle =  ", angle, "mx2 =  ", mx2, "my2 = " , my2, (my-centery) / radius);
 	
 	
 	ctx.drawImage(img, mx - size/2, my-size/2,size,size);
 	ctx.drawImage(img, mx2 - size/2, my2 -size/2, size, size);
 	ctx.drawImage(img, mx3 - size/2, my3 -size/2, size, size);
 	ctx.drawImage(img, mx4 - size/2, my4 -size/2, size, size);
+	ctx.drawImage(img, mx5 - size/2, my5 -size/2, size, size);
+	ctx.drawImage(img, mx6 - size/2, my6 -size/2, size, size);
+
+	//ctx.drawImage(img, mx3 - size/2, my3 -size/2, size, size);
+	//ctx.drawImage(img, mx4 - size/2, my4 -size/2, size, size);
 
 
 
